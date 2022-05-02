@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterClient">
+
+    <TextView
+        android:id="@+id/cat_search_nott"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Ingrese los datos"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold|italic" />
+
+            <EditText
+                android:layout_below="@id/cat_search_nott"
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:padding="20dp"
+                android:hint="Ingrese el nombre"
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:layout_below="@id/edt_name"
+                android:id="@+id/edt_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:padding="20dp"
+                android:hint="Ingrese el modelo"
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:layout_below="@id/edt_model"
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:padding="20dp"
+                android:hint="Numero Tel"
+                android:inputType="number"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:layout_below="@id/edt_phone"
+                android:id="@+id/edt_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:padding="20dp"
+                android:hint="Accion a seguir"
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                />
+            <CalendarView
+                android:layout_below="@id/edt_action"
+                android:id="@+id/calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/btn_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Aceptar"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/calendar"
+
+        />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:background="@drawable/buttons"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/btn_accept"
+            />
+
+
+</RelativeLayout>
