@@ -9,13 +9,15 @@ public class User implements Serializable {
     private String datepicked;
     private String action;
     private String model;
-    public User(Integer id, String name, String phone, String datepicked, String action, String model){
+    private String state;
+    public User(Integer id, String name, String phone, String datepicked, String action, String model, String state){
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.datepicked = datepicked;
         this.action = action;
         this.model = model;
+        this.state = state;
     }
     public User(){
 
@@ -38,5 +40,6 @@ public class User implements Serializable {
     public String getAction(){return action;}
     public void setAction(String action){this.action = action;}
 
-
+    public String getState(){return state;}
+    public void setState(String state){this.state = state;}
 }

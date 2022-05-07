@@ -3,6 +3,7 @@ package cesar.ogdai.clientes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,16 +16,17 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+import cesar.ogdai.clientes.background.BackgroundProcess;
 import cesar.ogdai.clientes.utils.Utilidades;
 
-public class RegisterClient extends AppCompatActivity {
+public class RegisterClient extends AppCompatActivity implements View.OnClickListener {
     EditText name, model ,phone, action;
     Button accept, cancel;
    public String date;
     CalendarView datePicked;
+    String state = "0";
 
     String Name, Model, Phone, Action;
-   // public int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +39,6 @@ public class RegisterClient extends AppCompatActivity {
         action = (EditText) findViewById(R.id.edt_action);
 
 
-
-
         //Buttons
         accept = (Button) findViewById(R.id.btn_accept);
         cancel = (Button) findViewById(R.id.btn_cancel);
@@ -48,12 +48,17 @@ public class RegisterClient extends AppCompatActivity {
             public void onClick(View v) {
 
                    registerClient();
-               // Toast.makeText(getApplicationContext(), "Date Selected: "+ date, Toast.LENGTH_SHORT).show();
-
-
-
+        //        startService(new Intent(getApplicationContext(), BackgroundProcess.class));
             }
         });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //stopService(new Intent(getApplicationContext(), BackgroundProcess.class));
+                finish();
+            }
+        });
+
 
 
 
@@ -62,33 +67,33 @@ public class RegisterClient extends AppCompatActivity {
         datePicked.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-           //  i = month +1;
-            /* Calendar c = Calendar.getInstance();
-             c.set(Calendar.YEAR, year);
-             c.set(Calendar.MONTH,month);
-             c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-             date = DateFormat.getDateInstance().format(c.getTime());
-
-             */
-           // date = dayOfMonth+"-"+ (month+1) + "-"  +year;
+                /*Days and Months  <= 9*/
                 String day = "";
-                if(dayOfMonth <= 9) {
-                    date = year + "-" + (month +1)+"-"+0+""+dayOfMonth;
+                if(dayOfMonth <= 9 && month <= 9) {
+                    date = year + "-" + 0+(month +1)+"-"+0+""+dayOfMonth;
                 }else{
                     date = year + "-" + (month +1) + "-" +dayOfMonth;
                 }
-          //  date = year +"/"+(month+1)+"/"+dayOfMonth;
-
             }
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
+      /*  cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-             //   Toast.makeText(getApplicationContext(), "date: "+date, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+    }
+    @Override
+    public void onClick(View view){
+        if(view == accept){
+            Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
+            //startService(new Intent(this, BackgroundProcess.class));
+            startService(new Intent(getApplicationContext(), BackgroundProcess.class));
+        }
+        if(view == cancel){
+            startService(new Intent(this, BackgroundProcess.class));
+        }
     }
 
 
@@ -108,8 +113,6 @@ public class RegisterClient extends AppCompatActivity {
 
         }else {
            SQLHelper conn = new SQLHelper(this, "bd_clientes", null, 1);
-
-           //using sql normally
            SQLiteDatabase db = conn.getWritableDatabase();
 
            String insert = "INSERT INTO "+
@@ -119,25 +122,17 @@ public class RegisterClient extends AppCompatActivity {
                    Utilidades.PHONE_FIELD+","+
                    Utilidades.MODEL+","+
                    Utilidades.ACTION+","+
-                   Utilidades.DATE_PICKED+" )"+ "VALUES ('"+name.getText().toString()+"','"+
+                   Utilidades.DATE_PICKED+", "+
+                   Utilidades.STATE+")"
+                   + "VALUES ('"+name.getText().toString()+"','"+
                    phone.getText().toString()+"','"+model.getText().toString().toLowerCase()+"', '"
                    +action.getText().toString()
-                   + "', '"+date+"')";
+                   + "', '"+date+"', "+state+" )";
 
            db.execSQL(insert);
-
-         //  Toast.makeText(getApplicationContext(), " Se ha cargado"+date, Toast.LENGTH_SHORT).show();
-
            db.close();
            finish();
            Toast.makeText(getApplicationContext(), "Se ha cargado", Toast.LENGTH_SHORT).show();
-
         }
-
-
-
     }
-
-
-
 }

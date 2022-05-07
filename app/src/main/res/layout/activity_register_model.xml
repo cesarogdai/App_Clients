@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterClient">
+    tools:context=".RegisterModel">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,47 +26,45 @@
                 android:textSize="22sp"
                 android:textStyle="bold|italic" />
 
-            <EditText
-                android:id="@+id/edt_action"
+            <AutoCompleteTextView
+                android:id="@+id/actv_brand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/input_design"
-                android:hint="Accion a seguir"
-                android:inputType="text"
-                android:padding="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimaryDark"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edt_phone"
+                android:hint="Seleccione la marca"
+                android:completionThreshold="1"
+                android:dropDownAnchor="@id/text_view_brands"
+                android:completionHint="SELECT BRAND"
+                android:popupTheme="@color/colorPrimaryDark"
+                />
+            <TextView
+                android:id="@+id/text_view_brands"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/input_design"
-                android:hint="Numero Tel"
-                android:inputType="number"
-                android:padding="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimaryDark"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:text=""
+                android:textSize="20sp"
+                android:paddingBottom="16dp"/>
 
-            <EditText
-                android:id="@+id/edt_name"
+            <AutoCompleteTextView
+                android:id="@+id/actv_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/input_design"
-                android:hint="Ingrese el nombre"
-                android:inputType="text"
-                android:padding="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimaryDark"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:hint="Seleccione el estatus"
+                android:completionThreshold="1"
+                android:completionHint="Seleccione el estatus"
+                android:dropDownAnchor="@id/text_view_status"
+                android:popupTheme="@color/colorPrimaryDark"/>
+            <TextView
+                android:id="@+id/text_view_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:paddingBottom="16dp"
+                />
+
 
             <EditText
-                android:id="@+id/edt_model"
+                android:id="@+id/data_car_add_model"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/input_design"
@@ -76,15 +74,55 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="17sp"
+                android:layout_marginTop="10dp"
                 android:textStyle="bold" />
 
-            <CalendarView
-                android:id="@+id/calendar"
+            <EditText
+                android:id="@+id/data_car_add_year"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:hint="Ingrese el Año"
+                android:inputType="text"
+                android:padding="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/data_car_add_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:hint="Ingrese el status"
+                android:inputType="text"
+                android:padding="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/data_car_add_km"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_design"
+                android:hint="Ingrese el kilometraje"
+                android:inputType="text"
+                android:padding="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
+
+
 
             <Button
-                android:id="@+id/btn_accept"
+                android:id="@+id/data_car_add_btn_accept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttons"
@@ -92,11 +130,12 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
+                android:layout_marginTop="10dp"
 
                 />
 
             <Button
-                android:id="@+id/btn_cancel"
+                android:id="@+id/data_car_add_btn_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

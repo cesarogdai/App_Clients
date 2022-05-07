@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public String modelName;
     SQLHelper conn;
     public int opcion = 0;
+    int state = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,11 +90,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CharSequence choice[] = new CharSequence[]{"Agregar Cliente", "Agregar Vehiculo"};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("¿Qué desea hacer?");
+                builder.setItems(choice, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0){
+                            Intent intent = new Intent(MainActivity.this, RegisterClient.class);
+                            startActivity(intent);
+                        }else if(which == 1){
+                            Intent intent = new Intent(MainActivity.this, RegisterModel.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+                builder.show();
 
-          //      Toast.makeText(getApplicationContext(), "Current Date "+ currentDate, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getApplicationContext(), "Current Date "+ currentDate, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(MainActivity.this, RegisterClient.class);
-                startActivity(intent);
+
+
+
             }
         });
         conn = new SQLHelper(getApplicationContext(), "bd_clientes", null, 1);
@@ -107,24 +125,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                state = 1;
                 String info = "id: " + listUser.get(position).getId() + "\n";
                 info += "name: " + listUser.get(position).getName() + "\n";
                 info += "phone: " + listUser.get(position).getPhone() + "\n";
                 info += "model: " + listUser.get(position).getModel() + "\n";
                 info += "action: " + listUser.get(position).getAction() + "\n";
                 info += "date: " + listUser.get(position).getDatepicked() +"\n";
+                info += "state" +listUser.get(position).getState() + "\n";
 
                 //           Toast.makeText(getApplicationContext(), ""+info, Toast.LENGTH_SHORT).show();
+          //      number +=1;
+            //    Toast.makeText(getApplicationContext(), "Times pressed: "+number, Toast.LENGTH_SHORT).show();
 
                 User user = listUser.get(position);
 
                 Intent intent = new Intent(MainActivity.this, ClientDetails.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("client", user);
-
                 intent.putExtras(bundle);
-
-
                 startActivity(intent);
             }
         });
@@ -149,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //        ", "+ Utilidades.MODEL+ ","+Utilidades.ACTION+" FROM " +Utilidades.Table_Clients + " WHERE "+
           //      Utilidades.DATE_PICKED +" ="+currentDate,null);
        Cursor cursor = db.rawQuery("SELECT * FROM "+ Utilidades.Table_Clients + " WHERE "+Utilidades.DATE_PICKED + "= '"+
-               currentDate+"'",null);
+               currentDate+"' AND "+Utilidades.STATE +" = 0",null);
 
         while (cursor.moveToNext()){
             user = new User();
@@ -230,6 +249,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             searchData("phone");
         }else if(id == R.id.nav_name){
             searchData("name");
+        }else if(id == R.id.nav_data_cars){
+            Toast.makeText(getApplicationContext(), "CLICK", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
