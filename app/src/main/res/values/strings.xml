@@ -13,22 +13,10 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="nav_main_bar">Clientes</string>
     <string name="nav_phone">Buscar por número</string>
-    <string name="client_details">Datos del Cliente</string>
+    <string name="client_details">Todos los datos</string>
     <string name="search_phone">Busqueda Telefonica</string>
     <string name="search_model">Busqueda Modelo</string>
     <string name="all_clients">Todos los Datos</string>
     <string name="register_client">Registrar Cliente</string>
-    <string name="nav_all_cars">Ver Inventario</string>
-
-    <string-array name="brands">
-        <item>KIA</item>
-        <item>HONDA</item>
-        <item>HYUNDAI</item>
-        <item>RENAULT</item>
-        <item>TOYOTA</item>
-        <item>FORD</item>
-        <item>MAZDA</item>
-    </string-array>
-    <string name="add_car_data">Agregar Vehiculo</string>
 
 </resources>

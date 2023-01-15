@@ -23,11 +23,6 @@
             android:id="@+id/nav_name"
             android:icon="@drawable/sesion"
             android:title="Buscar por nombre"/>
-        <item
-            android:id="@+id/nav_data_cars"
-            android:icon="@drawable/car"
-            android:title="@string/nav_all_cars"
-            />
 
 
 

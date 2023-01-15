@@ -246,8 +246,8 @@ public class ClientDetails extends AppCompatActivity {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                     // date = year +"-"+(month+1)+"-"+dayOfMonth;
-                    if(dayOfMonth <= 9 && month <= 9){
-                        Date = year + "-" +0+(month + 1) +"-"+ 0+dayOfMonth;
+                    if(dayOfMonth <= 9){
+                        Date = year + "-" + (month + 1) +"-"+ 0+dayOfMonth;
                     }else{
                         Date = year +"-"+(month+1)+"-"+dayOfMonth;
                     }
