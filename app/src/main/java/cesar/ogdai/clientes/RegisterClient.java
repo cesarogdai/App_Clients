@@ -62,19 +62,26 @@ public class RegisterClient extends AppCompatActivity {
         datePicked.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-           //  i = month +1;
-            /* Calendar c = Calendar.getInstance();
-             c.set(Calendar.YEAR, year);
-             c.set(Calendar.MONTH,month);
-             c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-             date = DateFormat.getDateInstance().format(c.getTime());
 
-             */
-           // date = dayOfMonth+"-"+ (month+1) + "-"  +year;
-                String day = "";
-                if(dayOfMonth <= 9) {
-                    date = year + "-" + (month +1)+"-"+0+""+dayOfMonth;
-                }else{
+
+                 if(month < 9){
+                    if(dayOfMonth < 10){
+                        date = year + "-" + 0 + (month + 1) + "-"+0+dayOfMonth;
+                    }else{
+                        date = year + "-" + 0 +(month + 1) + '-' +dayOfMonth;
+                    }
+                }
+                 else if(month >= 10){
+                     if(dayOfMonth < 10){
+                         date = year + "-" + (month + 1) + "-" + 0 + dayOfMonth;
+                     }else{
+                         date = year + "-" + (month + 1) + "-" +  dayOfMonth;
+                     }
+                 }
+
+
+
+                else{
                     date = year + "-" + (month +1) + "-" +dayOfMonth;
                 }
           //  date = year +"/"+(month+1)+"/"+dayOfMonth;

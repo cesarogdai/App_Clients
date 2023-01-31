@@ -3,6 +3,7 @@
     package="cesar.ogdai.clientes">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <queries> <package android:name="com.whatsapp.w4b" /> </queries>
 
     <application
         android:allowBackup="true"

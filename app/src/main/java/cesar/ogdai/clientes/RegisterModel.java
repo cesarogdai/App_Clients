@@ -28,7 +28,8 @@ public class RegisterModel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_model);
         //setContentView(R.layout.activity_list_client);
-        setTitle(R.string.add_car_data); //add_car_data
+        //setTitle(R.string.add_car_data); //add_car_data
+        //setTitle(R.string.ad);
       //  String[] brands = getResources().getStringArray(R.array.brands);
         accept = findViewById(R.id.data_car_add_btn_accept);
         AutoCompleteTextView brands = findViewById(R.id.actv_brand);

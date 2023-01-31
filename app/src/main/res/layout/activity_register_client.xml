@@ -75,6 +75,7 @@
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="17sp"
                 android:textStyle="bold"
+
                 />
             <CalendarView
                 android:layout_below="@id/edt_action"

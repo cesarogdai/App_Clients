@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cientes</string>
+    <string name="app_name">Agenda Clientes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,5 +18,6 @@
     <string name="search_model">Busqueda Modelo</string>
     <string name="all_clients">Todos los Datos</string>
     <string name="register_client">Registrar Cliente</string>
+    <string name="add_car_data">Agregar modelo</string>
 
 </resources>

@@ -245,11 +245,27 @@ public class ClientDetails extends AppCompatActivity {
             newDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                    // date = year +"-"+(month+1)+"-"+dayOfMonth;
-                    if(dayOfMonth <= 9){
-                        Date = year + "-" + (month + 1) +"-"+ 0+dayOfMonth;
-                    }else{
-                        Date = year +"-"+(month+1)+"-"+dayOfMonth;
+
+                    if(month < 10){
+                        if(dayOfMonth < 10){
+                            Date = year + "-" + 0 + (month + 1) + "-"+0+dayOfMonth;
+                        }else{
+                            Date = year + "-" + 0 +(month + 1) + '-' +dayOfMonth;
+                        }
+                    }
+                    else if(month >= 10)
+                    {
+                        if(dayOfMonth < 10)
+                        {
+                            Date = year + "-" + (month + 1) + "-" + 0 + dayOfMonth;
+                        }
+                        else
+                        {
+                            Date = year + "-" + (month + 1) + "-" +  dayOfMonth;
+                        }
+                    }
+                    else{
+                        Date = year + "-" + (month +1) + "-" +dayOfMonth;
                     }
 
                 }
